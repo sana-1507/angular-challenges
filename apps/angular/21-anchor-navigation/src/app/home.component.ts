@@ -5,15 +5,18 @@ import { NavButtonComponent } from './nav-button.component';
   imports: [NavButtonComponent],
   selector: 'app-home',
   template: `
-    <nav-button href="/foo" class="fixed left-1/2 top-3">Foo Page</nav-button>
-    <div id="top" class="h-screen bg-gray-500">
-      Empty
-      <nav-button href="#bottom">Scroll Bottom</nav-button>
-    </div>
-    <div id="bottom" class="h-screen bg-blue-300">
-      I want to scroll each
-      <nav-button href="#top">Scroll Top</nav-button>
-    </div>
+    <main>
+      <nav-button link="/foo" class="fixed left-1/2 top-3">Foo Page</nav-button>
+
+      <div id="top" class="h-[10%] bg-gray-500">
+        <nav-button link="#bottom">Scroll Bottom</nav-button>
+      </div>
+
+      <div id="bottom" class="h-screen bg-blue-300">
+        <p>I want to scroll</p>
+        <nav-button link="#top">Scroll Top</nav-button>
+      </div>
+    </main>
   `,
 })
 export class HomeComponent {}
