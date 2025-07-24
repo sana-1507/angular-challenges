@@ -1,5 +1,6 @@
 import { TOKEN } from '@angular-challenges/module-to-standalone/core/providers';
 import { Component, Inject } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'lib-user-shell',
@@ -27,8 +28,10 @@ import { Component, Inject } from '@angular/core';
   host: {
     class: 'flex flex-col p-4 gap-3 border border-blue',
   },
-  standalone: false,
+  standalone: true,
+  imports: [RouterOutlet],
 })
 export class UserShellComponent {
+  // eslint-disable-next-line @angular-eslint/prefer-inject
   constructor(@Inject(TOKEN) public token: string) {}
 }

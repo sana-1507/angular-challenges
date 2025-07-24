@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,11 +10,9 @@ import { Component } from '@angular/core';
         class="rounded-md border border-blue-400 px-4 py-2">
         Home
       </button>
-      <button
-        routerLink="admin"
-        class="rounded-md border border-blue-400 px-4 py-2">
+      <a routerLink="admin" class="rounded-md border border-blue-400 px-4 py-2">
         Admin
-      </button>
+      </a>
       <button
         routerLink="user"
         class="rounded-md border border-blue-400 px-4 py-2">
@@ -25,6 +24,7 @@ import { Component } from '@angular/core';
   host: {
     class: 'flex flex-col p-4 gap-3',
   },
-  standalone: false,
+  standalone: true,
+  imports: [RouterOutlet, RouterLink],
 })
 export class AppComponent {}
