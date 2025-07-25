@@ -7,7 +7,7 @@ export const appRoutes: Route[] = [
     path: 'home',
     loadChildren: () =>
       import('@angular-challenges/module-to-standalone/home').then(
-        (m) => m.ModuleToStandaloneHomeModule,
+        (m) => m.homeRoutes,
       ),
   },
   {
@@ -22,7 +22,7 @@ export const appRoutes: Route[] = [
     path: 'user',
     loadChildren: () =>
       import('@angular-challenges/module-to-standalone/user/shell').then(
-        (m) => m.UserShellModule,
+        (m) => m.userShellRoutes,
       ),
   },
 
@@ -30,7 +30,7 @@ export const appRoutes: Route[] = [
     path: 'forbidden',
     loadChildren: () =>
       import('@angular-challenges/module-to-standalone/forbidden').then(
-        (m) => m.ForbiddenModule,
+        (m) => m.forbiddenRoutes,
       ),
   },
 ];
