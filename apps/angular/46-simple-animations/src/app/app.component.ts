@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { fadeInAnimation, staggerListAnimation } from './animations/animations';
 
 @Component({
   imports: [],
@@ -19,7 +20,7 @@ import { Component } from '@angular/core';
   template: `
     <div class="mx-20 my-40 flex gap-5">
       <section>
-        <div>
+        <div @fadeIn>
           <h3>2008</h3>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae
@@ -29,7 +30,7 @@ import { Component } from '@angular/core';
           </p>
         </div>
 
-        <div>
+        <div @fadeIn>
           <h3>2010</h3>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae
@@ -39,7 +40,7 @@ import { Component } from '@angular/core';
           </p>
         </div>
 
-        <div>
+        <div @fadeIn>
           <h4>2012</h4>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae
@@ -50,7 +51,7 @@ import { Component } from '@angular/core';
         </div>
       </section>
 
-      <section>
+      <section @staggerList>
         <div class="list-item">
           <span>Name:</span>
           <span>Samuel</span>
@@ -83,5 +84,6 @@ import { Component } from '@angular/core';
       </section>
     </div>
   `,
+  animations: [fadeInAnimation, staggerListAnimation],
 })
 export class AppComponent {}
