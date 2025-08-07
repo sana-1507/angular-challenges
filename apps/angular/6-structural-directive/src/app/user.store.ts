@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { User } from './user.model';
+import { BehaviorSubject, map, Observable } from 'rxjs';
+import { Role, User } from './user.model';
 
 @Injectable({
   providedIn: 'root',
@@ -11,5 +11,19 @@ export class UserStore {
 
   add(user: User) {
     this.user.next(user);
+  }
+
+  get isAdmin$(): Observable<boolean> {
+    return this.user$.pipe(map((user: any) => user?.isAdmin ?? false));
+  }
+
+  hasAnyRole(roles: Role[] | Role): Observable<boolean> {
+    const requiredRoles = Array.isArray(roles) ? roles : [roles];
+    return this.user$.pipe(
+      map((user) => {
+        if (!user || !user.roles) return false;
+        return requiredRoles.some((role) => user.roles.includes(role));
+      }),
+    );
   }
 }

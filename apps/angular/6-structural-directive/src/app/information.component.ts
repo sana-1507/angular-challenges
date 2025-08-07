@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { HasRoleDirective } from './shared/directives/hasRole';
 import { UserStore } from './user.store';
 
 @Component({
@@ -6,14 +7,16 @@ import { UserStore } from './user.store';
   template: `
     <h2 class="mt-10 text-xl">Information Panel</h2>
     <!-- admin can see everything -->
-    <div>visible only for super admin</div>
-    <div>visible if manager</div>
-    <div>visible if manager and/or reader</div>
-    <div>visible if manager and/or writer</div>
-    <div>visible if client</div>
+    <div *hasRoleIsAdmin="true">visible only for super admin</div>
+    <div *hasRole="['MANAGER']">visible if manager</div>
+    <div *hasRole="['MANAGER', 'READER']">visible if manager and/or reader</div>
+    <div *hasRole="['MANAGER', 'WRITER']">visible if manager and/or writer</div>
+    <div *hasRole="['CLIENT']">visible if client</div>
+    <!-- ✅ Fixed here -->
     <div>visible for everyone</div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [HasRoleDirective],
 })
 export class InformationComponent {
   private readonly userStore = inject(UserStore);
